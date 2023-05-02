@@ -65,4 +65,11 @@ class PegawaiController extends Controller
         $pegawai = DB::table('pegawai')->where('pegawai_id', $id)->delete();
         return redirect('/pegawai');
     }
+
+    public function cari(Request $request)
+    {
+        $cari = $request->cari;
+        $pegawais = DB::table('pegawai')->where('pegawai_nama','like','%'.$cari.'%')->paginate();
+        return view('index', ['pegawais' => $pegawais]);
+    }
 }
