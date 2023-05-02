@@ -9,7 +9,7 @@ class PegawaiController extends Controller
 {
     public function index()
     {
-        $pegawais = DB::table('pegawai')->get();
+        $pegawais = DB::table('pegawai')->paginate(10);
         return view('index', ['pegawais' => $pegawais]);
     }
 

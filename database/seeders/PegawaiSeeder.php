@@ -20,7 +20,7 @@ class PegawaiSeeder extends Seeder
 
         $faker = Faker::create('id_ID');
 
-        for ($i=0; $i < 10 ; $i++) {
+        for ($i=0; $i < 20 ; $i++) {
             DB::table('pegawai')->insert([
                 'pegawai_nama' => $faker->name(),
                 'pegawai_jabatan' => $faker->jobTitle(),
