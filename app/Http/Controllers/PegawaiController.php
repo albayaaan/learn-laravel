@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PegawaiController extends Controller
 {
-    public function index($nama)
+    public function index()
     {
-        return $nama;
+        $pegawais = DB::table('pegawai')->get();
+        return view('index', ['pegawais' => $pegawais]);
     }
 
     public function formulir()
@@ -21,5 +23,46 @@ class PegawaiController extends Controller
         $nama = $request->input('nama');
         $alamat = $request->input('alamat');
         return "Nama: ".$nama.", Alamat: ".$alamat;
+    }
+
+    public function tambah()
+    {
+        return view('tambah');
+    }
+
+    public function store(Request $request)
+    {
+        DB::table('pegawai')->insert([
+            'pegawai_nama' => $request->nama,
+            'pegawai_jabatan' => $request->jabatan,
+            'pegawai_umur' => $request->umur,
+            'pegawai_alamat' => $request->alamat,
+        ]);
+
+        return redirect('/pegawai');
+    }
+
+    public function edit($id)
+    {
+        $pegawais = DB::table('pegawai')->where('pegawai_id', $id)->get();
+        return view('edit', ['pegawais' => $pegawais]);
+    }
+
+    public function update(Request $request)
+    {
+        $pegawai = DB::table('pegawai')->where('pegawai_id', $request->id)->update([
+            'pegawai_nama' => $request->nama,
+            'pegawai_jabatan' => $request->jabatan,
+            'pegawai_umur' => $request->umur,
+            'pegawai_alamat' => $request->alamat,
+        ]);
+
+        return redirect('/pegawai');
+    }
+
+    public function hapus($id)
+    {
+        $pegawai = DB::table('pegawai')->where('pegawai_id', $id)->delete();
+        return redirect('/pegawai');
     }
 }
