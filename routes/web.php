@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\ValidateController;
 use Illuminate\Support\Facades\Route;
 
@@ -51,4 +52,5 @@ Route::get('/mahasiswa/trash', [MahasiswaController::class, 'trash']);
 Route::get('/mahasiswa/kembalikan/{id}', [MahasiswaController::class, 'kembalikan']);
 Route::get('/mahasiswa/kembalikan_semua', [MahasiswaController::class, 'kembalikan_semua']);
 Route::get('/mahasiswa/hapus_permanen/{id}', [MahasiswaController::class, 'hapus_permanen']);
-Route::get('/mahasiswa/hapus_permanen_semua', [MahasiswaController::class, 'hapus_permanen_semua']);
+
+Route::get('/pengguna', [PenggunaController::class, 'index']);
