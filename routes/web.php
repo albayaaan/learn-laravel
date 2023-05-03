@@ -47,3 +47,8 @@ Route::post('/mahasiswa/store', [MahasiswaController::class, 'store']);
 Route::get('/mahasiswa/edit/{id}', [MahasiswaController::class, 'edit']);
 Route::put('/mahasiswa/update/{id}', [MahasiswaController::class, 'update']);
 Route::get('/mahasiswa/hapus/{id}', [MahasiswaController::class, 'hapus']);
+Route::get('/mahasiswa/trash', [MahasiswaController::class, 'trash']);
+Route::get('/mahasiswa/kembalikan/{id}', [MahasiswaController::class, 'kembalikan']);
+Route::get('/mahasiswa/kembalikan_semua', [MahasiswaController::class, 'kembalikan_semua']);
+Route::get('/mahasiswa/hapus_permanen/{id}', [MahasiswaController::class, 'hapus_permanen']);
+Route::get('/mahasiswa/hapus_permanen_semua', [MahasiswaController::class, 'hapus_permanen_semua']);

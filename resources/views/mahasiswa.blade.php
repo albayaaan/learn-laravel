@@ -16,7 +16,8 @@
                     target="_blank">www.malasngoding.com</a>
             </div>
             <div class="card-body">
-                <a href="/mahasiswa/tambah" class="btn btn-primary">Input Mahasiswa Baru</a>
+                <a href="/mahasiswa/tambah" class="btn btn-primary">Input Mahasiswa Baru</a> |
+                <a href="/mahasiswa/trash">Tong Sampah</a>
                 <br />
                 <br />
                 <table class="table table-bordered table-hover table-striped">

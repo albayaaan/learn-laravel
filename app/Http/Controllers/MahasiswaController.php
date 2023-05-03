@@ -61,4 +61,38 @@ class MahasiswaController extends Controller
         $mahasiswa->delete();
         return redirect()->back();
     }
+
+    public function trash()
+    {
+        $mahasiswas = Mahasiswa::onlyTrashed()->get();
+        return view('mahasiswa_trash',['mahasiswas' => $mahasiswas]);
+    }
+
+    public function kembalikan($id)
+    {
+        $mahasiswa = Mahasiswa::onlyTrashed()->where('id',$id);
+        $mahasiswa->restore();
+        return redirect()->back();
+    }
+
+    public function kembalikan_semua()
+    {
+        $mahasiswas = Mahasiswa::onlyTrashed();
+        $mahasiswas->restore();
+        return redirect()->back();
+    }
+
+    public function hapus_permanen($id)
+    {
+        $mahasiswa = Mahasiswa::onlyTrashed()->where('id',$id);
+        $mahasiswa->forceDelete();
+        return redirect()->back();
+    }
+
+    public function hapus_permanen_semua()
+    {
+        $mahasiswas = Mahasiswa::onlyTrashed();
+        $mahasiswas->forceDelete();
+        return redirect()->back();
+    }
 }
