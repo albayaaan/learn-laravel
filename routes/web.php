@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\ValidateController;
 use Illuminate\Support\Facades\Route;
@@ -39,3 +40,10 @@ Route::get('/pegawai/cari', [PegawaiController::class, 'cari']);
 
 Route::get('/input', [ValidateController::class, 'input']);
 Route::post('/proses', [ValidateController::class, 'proses']);
+
+Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
+Route::get('/mahasiswa/tambah', [MahasiswaController::class, 'tambah']);
+Route::post('/mahasiswa/store', [MahasiswaController::class, 'store']);
+Route::get('/mahasiswa/edit/{id}', [MahasiswaController::class, 'edit']);
+Route::put('/mahasiswa/update/{id}', [MahasiswaController::class, 'update']);
+Route::get('/mahasiswa/hapus/{id}', [MahasiswaController::class, 'hapus']);
