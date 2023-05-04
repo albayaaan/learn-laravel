@@ -54,3 +54,7 @@ Route::get('/mahasiswa/kembalikan_semua', [MahasiswaController::class, 'kembalik
 Route::get('/mahasiswa/hapus_permanen/{id}', [MahasiswaController::class, 'hapus_permanen']);
 
 Route::get('/pengguna', [PenggunaController::class, 'index']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
