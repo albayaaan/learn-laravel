@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CryptController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ValidateController;
 use Illuminate\Support\Facades\Route;
 
@@ -58,3 +60,12 @@ Route::get('/pengguna', [PenggunaController::class, 'index']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/crypt', [CryptController::class, 'crypt']);
+Route::get('/data', [CryptController::class, 'data']);
+Route::get('/data/{data_rahasia}', [CryptController::class, 'data_proses']);
+Route::get('/hash', [CryptController::class, 'hash']);
+
+Route::get('/upload', [UploadController::class, 'upload']);
+Route::post('/upload/proses', [UploadController::class, 'upload_proses']);
+Route::get('/upload/hapus/{id}', [UploadController::class, 'hapus']);
