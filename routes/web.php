@@ -4,8 +4,11 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CryptController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\MailController;
+use App\Http\Controllers\NotifController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\TesController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ValidateController;
 use Illuminate\Support\Facades\Route;
@@ -57,7 +60,7 @@ Route::get('/mahasiswa/hapus_permanen/{id}', [MahasiswaController::class, 'hapus
 
 Route::get('/pengguna', [PenggunaController::class, 'index']);
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -69,3 +72,22 @@ Route::get('/hash', [CryptController::class, 'hash']);
 Route::get('/upload', [UploadController::class, 'upload']);
 Route::post('/upload/proses', [UploadController::class, 'upload_proses']);
 Route::get('/upload/hapus/{id}', [UploadController::class, 'hapus']);
+
+Route::get('/session/tampil', [TesController::class, 'tampil']);
+Route::get('/session/buat', [TesController::class, 'buat']);
+Route::get('/session/hapus', [TesController::class, 'hapus']);
+
+Route::get('/pesan', [NotifController::class, 'index']);
+Route::get('/pesan/sukses', [NotifController::class, 'sukses']);
+Route::get('/pesan/peringatan', [NotifController::class, 'peringatan']);
+Route::get('/pesan/gagal', [NotifController::class, 'gagal']);
+
+Route::get('/error', [ErrorController::class, 'gagal']);
+Route::get('/404', function(){
+    return abort(404);
+});
+Route::get('/500', function(){
+    return abort(500, 'Servernya lagi error nih gan...');
+});
+
+Route::get('/kirimemail', [MailController::class, 'index']);
