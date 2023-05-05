@@ -25,6 +25,7 @@
                 <br />
 
                 <a href="/pegawai/tambah"> + Tambah Pegawai Baru</a>
+                <a href="/pegawai/cetak_pdf" class="btn btn-primary">CETAK PDF</a>
 
                 <br />
                 <br />

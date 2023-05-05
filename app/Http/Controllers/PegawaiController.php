@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pegawai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class PegawaiController extends Controller
 {
     public function index()
     {
-        $pegawais = DB::table('pegawai')->paginate(10);
+        // $pegawais = DB::table('pegawai')->paginate();
+        $pegawais = Pegawai::paginate(10);
         return view('index', ['pegawais' => $pegawais]);
     }
 
@@ -71,5 +74,14 @@ class PegawaiController extends Controller
         $cari = $request->cari;
         $pegawais = DB::table('pegawai')->where('pegawai_nama','like','%'.$cari.'%')->paginate();
         return view('index', ['pegawais' => $pegawais]);
+    }
+
+    public function cetak_pdf()
+    {
+        $pegawais = Pegawai::all();
+        $pdf = PDF::loadView('pegawai_pdf',['pegawais' => $pegawais]);
+        // return $pdf->download('laporan-pegawai.pdf');
+        return $pdf->stream();
+        // dd($pdf);
     }
 }
