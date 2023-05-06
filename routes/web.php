@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CryptController;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\HaloController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\NotifController;
@@ -40,10 +41,12 @@ Route::get('/pegawai', [PegawaiController::class, 'index']);
 Route::get('/pegawai/tambah', [PegawaiController::class, 'tambah']);
 Route::post('/pegawai/store', [PegawaiController::class, 'store']);
 Route::get('/pegawai/edit/{id}', [PegawaiController::class, 'edit']);
-Route::post('/pegawai/update', [PegawaiController::class, 'update']);
+Route::post('/pegawai/update/{id}', [PegawaiController::class, 'update']);
 Route::get('/pegawai/hapus/{id}', [PegawaiController::class, 'hapus']);
 Route::get('/pegawai/cari', [PegawaiController::class, 'cari']);
 Route::get('/pegawai/cetak_pdf', [PegawaiController::class, 'cetak_pdf']);
+Route::get('/pegawai/export_excel', [PegawaiController::class, 'export_excel']);
+Route::post('/pegawai/import_excel', [PegawaiController::class, 'import_excel']);
 
 Route::get('/input', [ValidateController::class, 'input']);
 Route::post('/proses', [ValidateController::class, 'proses']);
@@ -92,3 +95,13 @@ Route::get('/500', function(){
 });
 
 Route::get('/kirimemail', [MailController::class, 'index']);
+
+Route::view('/biodata', 'biodata');
+
+Route::get('/{locale}/form', function($locale){
+    App::setLocale($locale);
+    return view('biodata');
+});
+
+Route::get('/halo/{nama}', [HaloController::class, 'halo'])->name('panggil');
+Route::get('/halo', [HaloController::class, 'panggil']);

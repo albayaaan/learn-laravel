@@ -16,9 +16,9 @@
     <br />
 
     @foreach ($pegawais as $pegawai)
-        <form action="/pegawai/update" method="post">
+        <form action="/pegawai/update/{{ $pegawai->id }}" method="post">
             {{ csrf_field() }}
-            <input type="hidden" name="id" value="{{ $pegawai->pegawai_id }}"> <br />
+            <input type="hidden" name="id" value="{{ $pegawai->id }}"> <br />
             Nama <input type="text" required="required" name="nama" value="{{ $pegawai->pegawai_nama }}"> <br />
             Jabatan <input type="text" required="required" name="jabatan" value="{{ $pegawai->pegawai_jabatan }}">
             <br />

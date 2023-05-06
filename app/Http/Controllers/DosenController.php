@@ -10,6 +10,6 @@ class DosenController extends Controller
     {
         $nama = "Tsaqib Abyan";
         $matkuls = ["Algoritma & Pemrograman","Kalkulus","Pemrograman Web"];
-        return view('biodata', ['nama' => $nama, 'matkuls' => $matkuls]);
+        // return view('biodata', ['nama' => $nama, 'matkuls' => $matkuls]);
     }
 }
