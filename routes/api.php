@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Http\Request;
@@ -23,3 +24,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/perusahaan/{id}', [PerusahaanController::class, 'show']);
 Route::get('/students', [StudentController::class, 'index']);
 Route::post('/students', [StudentController::class, 'store']);
+
+Route::apiResource('/customers', CustomerController::class);
