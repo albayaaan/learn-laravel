@@ -8,12 +8,12 @@ class HaloController extends Controller
 {
     public function halo($nama)
     {
-        return "Halo ".$nama;
+        return "Halo " . $nama;
     }
 
     public function panggil()
     {
         // return action('HaloController@halo',['nama' => 'abyan']);
-        return route('panggil',['nama' => 'abyan'] );
+        return route('panggil', ['nama' => 'abyan']);
     }
 }

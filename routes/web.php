@@ -86,11 +86,11 @@ Route::get('/pesan/sukses', [NotifController::class, 'sukses']);
 Route::get('/pesan/peringatan', [NotifController::class, 'peringatan']);
 Route::get('/pesan/gagal', [NotifController::class, 'gagal']);
 
-Route::get('/error', [ErrorController::class, 'gagal']);
-Route::get('/404', function(){
+// Route::get('/error', [ErrorController::class, 'gagal']);
+Route::get('/404', function () {
     return abort(404);
 });
-Route::get('/500', function(){
+Route::get('/500', function () {
     return abort(500, 'Servernya lagi error nih gan...');
 });
 
@@ -98,7 +98,7 @@ Route::get('/kirimemail', [MailController::class, 'index']);
 
 Route::view('/biodata', 'biodata');
 
-Route::get('/{locale}/form', function($locale){
+Route::get('/{locale}/form', function ($locale) {
     App::setLocale($locale);
     return view('biodata');
 });
