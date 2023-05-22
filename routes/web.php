@@ -9,6 +9,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\NotifController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\RecordingController;
 use App\Http\Controllers\TesController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ValidateController;
@@ -105,3 +106,16 @@ Route::get('/{locale}/form', function ($locale) {
 
 Route::get('/halo/{nama}', [HaloController::class, 'halo'])->name('panggil');
 Route::get('/halo', [HaloController::class, 'panggil']);
+
+Route::get('/recordings', [RecordingController::class, 'create']);
+Route::post('/recordings', [RecordingController::class, 'store']);
+
+Route::get('/rekam', function () {
+    return view('rekam');
+});
+
+Route::post('/rekam', function (Request $request) {
+    $path =  \Storage::disk('public')->put('videos', $request->video);
+    $url = \Storage::disk('public')->url($path);
+    return $url;
+});
